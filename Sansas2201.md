@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td>Born2beroot</td>
-          <td><a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/clh7t2y4h006808mgeuk0cyy7/stats?cursusId=21&coalitionId=52" alt="abarbieu's 42 stats" /></a></td>
+          <td<a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/clh7t2y4h006808mgeuk0cyy7/project/3072731" alt="abarbieu's 42 Born2beroot Score" /></a></td>
         </tr>
     </tbody>
   </table></td>
