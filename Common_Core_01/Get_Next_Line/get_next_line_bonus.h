@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 15:04:35 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/05/03 15:09:28 by abarbieu         ###   ########.fr       */
+/*   Created: 2023/05/08 09:37:57 by abarbieu          #+#    #+#             */
+/*   Updated: 2023/05/08 09:38:06 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include "get_next_line.h"
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-int	main()
-{
-	int	fd;
-	int	i;
-//	char	*line;
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <limits.h>
 
-	i = 0;
-	fd = open("exemple.txt", O_RDONLY);
-	get_next_line(fd);
-	//system("leaks a.out");
-}
+# define TRUE 1
+# define FALSE 0
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+char	*get_next_line(int fd);
+char	*ft_join(char *reserve, char **line, char *buff);
+char	*ft_set_reserve(char **s);
+size_t	ft_strlen(char *str);
+
+#endif

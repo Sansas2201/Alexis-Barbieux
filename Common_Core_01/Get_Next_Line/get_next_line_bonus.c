@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 12:10:27 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/05/08 09:35:21 by abarbieu         ###   ########.fr       */
+/*   Created: 2023/05/08 09:38:30 by abarbieu          #+#    #+#             */
+/*   Updated: 2023/05/08 09:38:36 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,17 @@ char	*get_next_line(int fd)
 	int					c_read;
 	char				*line;
 	static char			*reserve = 0;
-	char				buff[BUFFER_SIZE + 1];
+	char				buff[OPEN_MAX][BUFFER_SIZE + 1];
 
 	while (check_newline(reserve) == FALSE)
 	{
-		c_read = read(fd, buff, BUFFER_SIZE);
+		c_read = read(fd, buff[fd], BUFFER_SIZE);
 		if (c_read == -1)
 			return (ft_set_reserve(&reserve));
 		if (c_read == 0)
 			break ;
-		buff[c_read] = '\0';
-		reserve = ft_join(reserve, &line, buff);
+		buff[fd][c_read] = '\0';
+		reserve = ft_join(reserve, &line, buff[fd]);
 		if (!reserve)
 			return (0);
 		free(line);
@@ -113,6 +113,6 @@ char	*get_next_line(int fd)
 		return (ft_set_reserve(&reserve));
 	reserve = ft_reste(reserve);
 	if (reserve && reserve[0] == '\0')
-		ft_set_reserve(&reserve);
+		(ft_set_reserve(&reserve));
 	return (line);
 }

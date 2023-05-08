@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 12:08:22 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/05/03 15:07:31 by abarbieu         ###   ########.fr       */
+/*   Created: 2023/05/08 09:37:32 by abarbieu          #+#    #+#             */
+/*   Updated: 2023/05/08 09:37:40 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# include <limits.h>
 
 # define TRUE 1
 # define FALSE 0
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 42
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
 # endif
 
 char	*get_next_line(int fd);
 char	*ft_join(char *reserve, char **line, char *buff);
 char	*ft_set_reserve(char **s);
-int		ft_strlen(const char *str);
+size_t	ft_strlen(char *str);
 
 #endif
