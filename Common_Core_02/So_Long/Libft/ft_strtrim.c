@@ -52,9 +52,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	result[i] = '\0';
 	return (result);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	printf("%s", ft_strtrim("          ", " "));
-}*/

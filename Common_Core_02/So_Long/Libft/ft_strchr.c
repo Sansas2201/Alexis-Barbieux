@@ -27,12 +27,3 @@ char	*ft_strchr(const char *str, int c)
 		return (((char *)str) + i);
 	return (0);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int	main()
-{
-	printf("%s", ft_strchr("salut", 'l'));
-	printf("%s", strchr("salut", 'l'));
-
-}*/

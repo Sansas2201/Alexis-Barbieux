@@ -19,21 +19,3 @@ int	ft_isascii(int c)
 	else
 		return (0);
 }
-/*
-#include <stdio.h>
-#include <ctype.h>
-int main()
-{
-    int i;
-	int j;
-
-    i = 0;
-	j = 0;
-    while (i < 200)
-    {
-        printf("%d %d.", j, isascii(i));
-        printf("%d ", ft_isascii(i));
-        i++;
-		j++;
-    }
-}*/

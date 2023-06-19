@@ -38,11 +38,3 @@ int	ft_atoi(const char *str)
 		res *= -1;
 	return (res);
 }
-/*
-#include <stdio.h>
-#include <stdlib.h>
-int	main()
-{
-	printf("%d.", atoi("   \n  -1548abc "));
-	printf("%d ", ft_atoi("      \n  -1548abc "));
-}*/

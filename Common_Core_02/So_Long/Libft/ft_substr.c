@@ -35,9 +35,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[i] = '\0';
 	return (sub);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	printf("%s", ft_substr("", 2, 4));
-}*/

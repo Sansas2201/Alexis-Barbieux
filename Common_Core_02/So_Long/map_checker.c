@@ -3,105 +3,135 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 15:00:21 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/05/09 09:57:48 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:20:07 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	check_path(char **tab, int height)
+static int	check_path(t_checker *check, int x, int y, int item_init)
 {
+	static int	item;
+	static int	check_exit;
 
+	item = item_init;
+	if (check->tab[y][x] == 'C')
+		item--;
+	if (check->tab[y][x] == 'E')
+		check_exit++;
+	check->tab[y][x] = '2';
+	if (check->tab[y - 1][x] != '1' && check->tab[y - 1][x] != '2' && \
+		check->tab[y - 1][x] != 'D')
+		check_path(check, x, y - 1, item);
+	if (check->tab[y + 1][x] != '1' && check->tab[y + 1][x] != '2' && \
+		check->tab[y + 1][x] != 'D')
+		check_path(check, x, y + 1, item);
+	if (check->tab[y][x - 1] != '1' && check->tab[y][x - 1] != '2' && \
+		check->tab[y][x + 1] != 'D')
+		check_path(check, x - 1, y, item);
+	if (check->tab[y][x + 1] != '1' && check->tab[y][x + 1] != '2' && \
+		check->tab[y][x + 1] != 'D')
+		check_path(check, x + 1, y, item);
+	if (item == 0 && check_exit == 1)
+		return (TRUE);
+	return (FALSE);
 }
 
-static int	check_element(char **tab, int height)
+static int	check_wall(t_checker *check)
 {
-	struct t_variable;
-	while (tab[i][j] && tab[i][j] == '1')
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (check->tab[i][j] && check->tab[i][j] == '1')
 		j++;
-	if (tab[i][j] != '1')
-		return (error_ret('s', t_variable));
-	while (i < height)
+	if (check->tab[i][j] == '\n')
+		j--;
+	while (i < check->height && check->tab[i][j] == '1')
+		i++;
+	while (j > 0 && check->tab[i][j] == '1')
+		j--;
+	while (i > 0 && check->tab[i][j] == '1')
+		i--;
+	if (check->tab[i][j] == '1')
+		return (TRUE);
+	return (error_ret('w'));
+}
+
+static int	check_element(t_checker *check, char c)
+{
+	if (c == '0')
+		return (TRUE);
+	if (c == '1')
+		return (TRUE);
+	if (c == 'C')
 	{
-		if (tab[i][1] != '1')
-			return (error_ret('s', t_variable));
-		while (tab[i][j])
+		check->item++;
+		return (TRUE);
+	}
+	if (c == 'E')
+	{
+		check->exit++;
+		return (TRUE);
+	}
+	if (c == 'P')
+	{
+		check->chara++;
+		return (TRUE);
+	}
+	if (c == 'D')
+		return (TRUE);
+	return (error_ret('q'));
+}
+
+static int	check_map_bis(t_checker *check)
+{
+	unsigned long	i;
+	unsigned long	j;
+
+	if (check_wall(check) == FALSE)
+		return (error_ret('w'));
+	i = 1;
+	while (((int)i) <= check->height)
+	{
+		j = 1;
+		while (check->tab[i][j] && j <= (ft_strlen(check->tab[i]) - 2))
 		{
-			if (tab[i][j] == 'C')
-				t_variable->item++;
-			if (tab[i][j] == 'E')
-				t_variable->exit++;
-			if (tab[i][j] == 'P')
-				t.variable->chara++;
-			if (t_variable.item == 0 || (t_variable.chara == 0 || \
-				t_variable.chara > 1) || (t.variable.exit == 0 || \
-				t.variable.exit > 1))
-				return (error_ret('n', t_variable));
+			if (check_element(check, check->tab[i][j]) == FALSE)
+				return (FALSE);
 			j++;
 		}
-		if (tab[i][ft_strlen(tab[i])] != 1)
-			return (error_ret('s', t_variable));
+		i++;
 	}
-	j = 0;
-	while (tab[i][j] && tab[i][j] == '1')
-		j++;
-	if (tab[i][j] != '1')
-		return (error_ret('s', t_variable));
-	return (check_path(tab, height));
+	if (check_element_count(check->chara, check->item, check->exit) == FALSE)
+		return (FALSE);
+	return (check_path(check, 1, 1, check->item));
 }
 
-int	check_map(char *map)
+int	check_map(char *map, t_checker *check)
 {
-	char	**tab;
-	int		fd;
-	int		i;
-	int		height;
+	int	fd;
+	int	i;
 
 	i = 0;
 	fd = open(map, O_RDONLY);
-	while (tab[i] != NULL)
+	check->tab[i] = get_next_line(fd);
+	if (check->tab[i] == 0)
+		return (error_ret('v'));
+	while (check->tab[i] != 0)
 	{
-		tab[i] = get_next_line(fd);
+		if (i == 54)
+			exit (write(1, "Error : Map too tall !\n", 23));
 		i++;
+		check->tab[i] = get_next_line(fd);
 	}
-	height = i - 1;
-	i = 0;
-	while (i <= height)
-	{
-		if (ft_strlen(tab[i]) < height || ft_strlen(tab[i]) <= 2 || height <= 2)
-		{
-			write(1, "Error : Wrong map size", 22);
-			return (FALSE);
-		}
-		i++;
-	}
-	return (check_element(tab, height));
-}
-
-int	check_ber(char *map)
-{
-	int		i;
-	int		j;
-	char	*ber;
-
-	i = 0;
-	j = 0;
-	ber = "ber";
-	while (map[i] && map[i] != '.')
-		i++;
-	if (map[i] == '.')
-	{
-		i++;
-		while (map[i] == ber[j])
-		{
-			i++;
-			j++;
-		}
-		if (j == 3)
-			return (TRUE);
-	}
-	return (FALSE);
+	close(fd);
+	check->height = i - 1;
+	if (check_size(check) == FALSE)
+		return (FALSE);
+	return (check_map_bis(check));
 }

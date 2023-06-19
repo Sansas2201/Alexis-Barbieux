@@ -49,9 +49,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result[i] = '\0';
 	return (result);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	printf("%s", ft_strjoin("salut ", "ca va"));
-}*/

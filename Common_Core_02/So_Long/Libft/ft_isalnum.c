@@ -20,18 +20,3 @@ int	ft_isalnum(int c)
 	else
 		return (0);
 }
-/*
-#include <stdio.h>
-#include <ctype.h>
-int main()
-{
-	int i;
-
-	i = 0;
-	while (i < 200)
-	{
-		printf("%d.", isalnum(i));
-		printf("%d ", ft_isalnum(i));
-		i++;
-	}										    
-}*/

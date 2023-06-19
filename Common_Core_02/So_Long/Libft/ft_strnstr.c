@@ -34,13 +34,3 @@ char	*ft_strnstr(const char *str1, const char *str2, size_t len)
 	}
 	return (0);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main()
-{
-	printf("%s\n", ft_strnstr("fake", ((void *)0), 3));
-	printf("%s", strnstr("fake", ((void *)0), 3));
-
-}
-*/

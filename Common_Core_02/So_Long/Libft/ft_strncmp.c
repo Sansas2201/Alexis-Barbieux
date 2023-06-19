@@ -32,11 +32,3 @@ int	ft_strncmp(const char *str1, const char *str2, size_t size)
 	else
 		return (0);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int	main()
-{
-	printf("%d ", ft_strncmp("salut", "salwt", 5));
-	    printf("%d", strncmp("salut", "salwt", 5));
-}*/

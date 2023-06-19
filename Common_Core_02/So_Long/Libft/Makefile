@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 09:28:00 by abarbieu          #+#    #+#              #
-#    Updated: 2023/04/19 11:13:31 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/05/23 15:09:20 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,17 @@ SRCS = ft_isalpha.c \
 	   ft_putchar_fd.c \
 	   ft_putstr_fd.c \
 	   ft_putendl_fd.c \
-	   ft_putnbr_fd.c
-
+	   ft_putnbr_fd.c \
+	   Printf/ft_c.c \
+	   Printf/ft_hex.c \
+	   Printf/ft_point.c \
+	   Printf/ft_printf.c \
+	   Printf/ft_put_un_int.c \
+	   Printf/ft_putnbr.c \
+	   Printf/ft_str.c \
+	   GNL/get_next_line_utils.c \
+	   GNL/get_next_line.c
+	
 BONUS = ft_lstnew.c \
 		ft_lstadd_front.c \
 		ft_lstsize.c \
@@ -58,27 +67,41 @@ BONUS = ft_lstnew.c \
 		ft_lstmap.c
 
 HEADER = libft.h
+		
+OBJS = $(SRCS:.c=.o)
 
-OBJECTS = ${SRCS:.c=.o}
+BONUS_OBJS = $(BONUS:.c=.o)
 
-BONUS_OBJECTS = ${BONUS:.c=.o}
+CC = gcc
 
-FLAGS += -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
+
+RM = rm -f
+
+COMPILE = ar rcs $(NAME)
 
 all: $(NAME)
 
 clean:
-	rm -rf $(OBJECTS) $(BONUS_OBJECTS)
-fclean: clean
-	rm -rf $(NAME)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
-$(NAME):$(OBJECTS)
-	ar -rcs $(NAME) $(OBJECTS)
+fclean: clean
+	$(RM) $(NAME)
+
+$(NAME):$(OBJS)
+	@$(COMPILE) $(OBJS)
 
 re: fclean all
 
 .c.o:
-	cc $(FLAGS) -c $< -o $@ -I $(HEADER)
+	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER)
 
-bonus: $(OBJECTS) $(BONUS_OBJECTS)
-	ar -rcs $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
+norm:
+	@norminette -R CheckForbiddenSourceHeader $(SRCS) $(HEADER)
+
+.PHONY: all clean fclean re bonus norm
+
+.SILENT: all clean fclean re bonus

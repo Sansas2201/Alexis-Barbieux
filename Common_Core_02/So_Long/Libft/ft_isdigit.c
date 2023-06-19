@@ -19,18 +19,3 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
-/*
-#include <stdio.h>
-#include <ctype.h>
-int main()
-{
-    int i;
-
-    i = 0;
-    while (i < 200)
-    {
-        printf("%d.", isdigit(i));
-        printf("%d ", ft_isdigit(i));
-        i++;
-    }
-}*/

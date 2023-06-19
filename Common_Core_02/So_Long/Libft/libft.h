@@ -3,17 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 09:58:17 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/04/18 12:21:32 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/05/22 11:00:57 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include <limits.h>
+# include <fcntl.h>
+
+# define TRUE 1
+# define FALSE 0
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -63,5 +74,18 @@ void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int			ft_printf(const char *str, ...);
+int			ft_c(int c);
+int			ft_str(char *str);
+int			ft_point(unsigned long long point);
+int			ft_putnbr(int nb);
+int			ft_put_un_int(unsigned int nb);
+int			ft_hex(unsigned int nb, char format);
+
+char		*get_next_line(int fd);
+char		*ft_join(char *reserve, char **line, char *buff);
+char		*ft_set_reserve(char **s);
+size_t		ft_strlen_gnl(char *str);
 
 #endif

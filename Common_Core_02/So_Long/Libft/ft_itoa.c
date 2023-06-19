@@ -66,9 +66,3 @@ char	*ft_itoa(int n)
 	ft_convert(result, n, len);
 	return (result);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	printf("%s", ft_itoa(8124));
-}*/
