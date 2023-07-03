@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 09:58:52 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/27 13:41:04 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:47:29 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_sort(t_push_swap *lst)
 	exit (0);
 }
 
-int	check_doublon(t_push_swap *lst)
+int	check_dup(t_push_swap *lst)
 {
 	int	count;
 	int	cmp;
@@ -38,7 +38,7 @@ int	check_doublon(t_push_swap *lst)
 		while (cmp < lst->count_a)
 		{
 			if (lst->a[count] == lst->a[cmp])
-				exit (write(1, "Error : No doublon allowed !\n", 29));
+				exit (write(1, "Error : No duplicate allowed !\n", 29));
 			cmp++;
 		}
 		count++;

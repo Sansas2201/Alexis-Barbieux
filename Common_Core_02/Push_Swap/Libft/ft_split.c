@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 11:04:42 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/04/20 10:55:29 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/06/29 13:41:18 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static char	*ft_word(char const *str, char c)
 	i = 0;
 	len_word = ft_wordlen(str, c);
 	word = (char *)malloc(sizeof(char) * (len_word + 1));
+	if (!word)
+		return (0);
 	while (i < len_word)
 	{
 		word[i] = str[i];

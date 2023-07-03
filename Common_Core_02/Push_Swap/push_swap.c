@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:45:00 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/19 11:49:43 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/06/29 13:46:55 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_push_swap	lst;
 
 	if (argc < 2)
-		return (write(1, "Error : Wrong number of arguments !\n", 37));
+		return (write(1, "\n", 1));
 	else if (argc == 2)
 	{
 		if (check_one_arg(argv) == FALSE)
@@ -29,8 +29,10 @@ int	main(int argc, char **argv)
 		check_more_arg(argc, argv);
 		fill_tab_2(argc, argv, &lst);
 	}
-	check_doublon(&lst);
+	lst.count_b = 0;
+	check_dup(&lst);
 	check_sort(&lst);
 	check_case(&lst);
 	ft_algo(&lst);
+	exit(0);
 }

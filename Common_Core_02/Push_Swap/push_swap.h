@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:45:06 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/27 14:58:45 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:47:49 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_push_swap
 
 void	case_3(t_push_swap *lst);
 int		check_case(t_push_swap *lst);
-int		check_doublon(t_push_swap *lst);
+int		check_dup(t_push_swap *lst);
 int		check_more_arg(int argc, char **argv);
 int		check_one_arg(char **argv);
 int		check_sort(t_push_swap *lst);

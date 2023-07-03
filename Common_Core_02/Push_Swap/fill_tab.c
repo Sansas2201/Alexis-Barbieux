@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 10:00:09 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/14 10:08:46 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/06/29 13:46:07 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,15 @@ void	fill_tab_1(char **argv, t_push_swap *lst)
 	{
 		while (argv[1][i] == ' ' && ft_isdigit(argv[1][i + 1]) == 0)
 			i++;
-		if (argv[1][i] == ' ' && ft_isdigit(argv[1][i + 1]) == 1)
+		if ((argv[1][i] == ' ' || argv[1][i] == '-') && \
+			ft_isdigit(argv[1][i + 1]) == 1)
 			lst->count++;
 		i++;
 	}
-	if (lst->count == 0 || lst->count == 1)
-		exit (write(1, "Error : Need at least 2 numbers !\n", 34));
+	if (lst->count == 0)
+		exit (write(1, "\n", 1));
 	fill_tab_1_bis(argv, lst);
 	lst->count_a = lst->count;
-	lst->count_b = 0;
 	i = 0;
 	while (lst->tmp[i])
 	{
@@ -91,7 +91,6 @@ void	fill_tab_2(int argc, char **argv, t_push_swap *lst)
 	if (!lst->a || !lst->b)
 		exit(0);
 	lst->count_a = argc - 1;
-	lst->count_b = 0;
 	while (y < argc)
 	{
 		lst->a[y - 1] = ft_atoi_ps(argv[y]);
