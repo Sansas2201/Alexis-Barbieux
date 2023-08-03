@@ -6,7 +6,7 @@
 #    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 09:47:38 by abarbieu          #+#    #+#              #
-#    Updated: 2023/07/19 14:50:13 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/08/03 15:46:36 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ all: $(NAME)
 libft:
 	$(DEPENDS)
 
-$(NAME):libft $(OBJ)
+$(NAME):$(OBJ) libft 
 		$(COMPILE) $(OBJ)
 
 clean:
@@ -70,6 +70,6 @@ norm:
 	norminette -R CheckForbiddenSourceHeader $(SRC) $(HEADER)
 	make -C ./Libft norm
 
-.PHONY: all clean fclean re libft norm bonus
+.PHONY: all clean fclean re norm bonus
 
 .SILENT: all clean fclean re libft norm bonus
