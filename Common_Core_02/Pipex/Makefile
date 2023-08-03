@@ -6,7 +6,7 @@
 #    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 09:47:38 by abarbieu          #+#    #+#              #
-#    Updated: 2023/08/03 15:46:36 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/08/03 15:57:21 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,6 @@ norm:
 	norminette -R CheckForbiddenSourceHeader $(SRC) $(HEADER)
 	make -C ./Libft norm
 
-.PHONY: all clean fclean re norm bonus
+.PHONY: all clean fclean re norm libft bonus
 
 .SILENT: all clean fclean re libft norm bonus
