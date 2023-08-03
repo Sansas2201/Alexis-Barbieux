@@ -41,7 +41,7 @@
     </tbody>
   </table>
   </tr>
-  <-- <tr>
+  --> <tr>
   <table>
         <tbody>
                 <tr>
@@ -62,11 +62,11 @@
         </tr>
         <tr>
           <td>Pipex</td>
-          <td><a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/clh7t2y4h006808mgeuk0cyy7/project/3090016" alt="abarbieu's 42 pipex Score" /></a></td>
+          <td><a <a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/clh7t2y4h006808mgeuk0cyy7/project/3139170" alt="abarbieu's 42 pipex Score" /></a> /></a></td>
         </tr>
         <tr>
           <td>Exam Rank 2</td>
-          <td><a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/clh7t2y4h006808mgeuk0cyy7/project/3086886" alt="abarbieu's 42 Exam Rank 02 Score" /></a></td>
+          <td><a <a <a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/clh7t2y4h006808mgeuk0cyy7/project/3086886" alt="abarbieu's 42 Exam Rank 02 Score" /></a> /></a></td>
         </tr>
     </tbody>
   </table></td>
