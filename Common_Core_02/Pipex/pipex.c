@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:40:43 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/08 11:03:11 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:20:17 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv, char **env)
 	t_pipex	lst;
 
 	if (argc != 5)
-		exit (1);
+		exit (0);
 	else
 	{
 		lst.fd_in = open_file(argv[1], 0);

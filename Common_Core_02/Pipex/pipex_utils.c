@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:32:28 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/08 11:12:35 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:27:26 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,8 @@ void	exec(char *argv, char **env, t_pipex *lst)
 		if (access(lst->path[i], X_OK) == 0)
 			execve(lst->path[i], lst->cmd, env);
 	}
-	write(2, "zsh: command not found: ", 24);
-	ft_putstr_fd(argv, 2);
-	write(2, "\n", 1);
-	exit (1);
+	command_not_found(argv);
+	exit (0);
 }
 
 void	first_cmd(char *argv, char **env, t_pipex *lst)

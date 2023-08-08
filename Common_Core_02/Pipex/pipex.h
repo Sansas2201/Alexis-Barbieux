@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:36:25 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/03 12:52:15 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:27:42 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_pipex
 	pid_t	child_2;
 }	t_pipex;
 
+void	command_not_found(char *argv);
 void	exec(char *argv, char **env, t_pipex *lst);
 void	first_cmd(char *argv, char **env, t_pipex *lst);
 int		is_empty(char *argv);

@@ -6,7 +6,7 @@
 #    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 09:47:38 by abarbieu          #+#    #+#              #
-#    Updated: 2023/08/08 12:43:54 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/08/08 13:28:41 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,10 @@ NAME = pipex
 
 SRC = pipex.c \
 		pipex_utils.c \
-		parsing.c
+		parsing.c \
+		pipex_utils_bis.c
 		
-SRC_BONUS = Bonus/pipex_bonus.c \
-				Bonus/pipex_utils_bonus.c \
-				Bonus/parsing_bonus.c
-
 OBJ = ${SRC:.c=.o}
-
-OBJ_BONUS = ${SRC_BONUS:.c=.o}
 
 LIBFT = Libft/libft.a
 
@@ -63,15 +58,12 @@ fclean: clean
 
 re: fclean all
 
-bonus:libft $(OBJ_BONUS)
-	$(COMPILE) $(OBJ_BONUS)
-
 .c.o : $(CC) -c $(CFLAGS) -I./Libft $< -o $@
 
 norm:
 	norminette -R CheckForbiddenSourceHeader $(SRC) $(HEADER)
 	make -C ./Libft norm
 
-.PHONY: all clean fclean re norm bonus
+.PHONY: all clean fclean re norm
 
-#.SILENT: all clean fclean re libft norm bonus
+#.SILENT: all clean fclean re libft norm
