@@ -6,7 +6,7 @@
 #    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 09:47:38 by abarbieu          #+#    #+#              #
-#    Updated: 2023/08/03 15:57:30 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/08/07 15:02:05 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ COMPILE = gcc $(CFLAGS) -o $(NAME) -I./Libft -L./Libft -lft
 # Colors
 GREEN= \033[1;32m
 RED= \033[1;31m
+WHITE= \033[0m
 
 all: $(NAME)
 
@@ -57,12 +58,12 @@ $(NAME):libft $(OBJ)
 clean:
 	$(REMOVE) $(OBJ)
 	make -C ./Libft clean
-	echo "$(GREEN)All .o removed"
+	echo "$(GREEN)All .o removed$(WHITE)"
 
 fclean: clean
 	$(REMOVE) $(NAME)
 	make -C ./Libft fclean
-	echo "$(GREEN)All .a removed"
+	echo "$(GREEN)All .a removed$(WHITE)"
 
 re: fclean all
 

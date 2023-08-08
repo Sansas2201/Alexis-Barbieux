@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:45:00 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/29 13:46:55 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:10:33 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		if (check_one_arg(argv) == FALSE)
-			return (write(1, "Error : Only numbers in arguments !\n", 36));
+			return (write(2, "Error : Only numbers in arguments !\n", 36));
 		fill_tab_1(argv, &lst);
 	}
 	else if (argc > 2)

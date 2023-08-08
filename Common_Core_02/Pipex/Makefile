@@ -6,7 +6,7 @@
 #    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 09:47:38 by abarbieu          #+#    #+#              #
-#    Updated: 2023/08/03 15:57:21 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/08/08 12:43:54 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,17 +24,19 @@ OBJ = ${SRC:.c=.o}
 
 OBJ_BONUS = ${SRC_BONUS:.c=.o}
 
+LIBFT = Libft/libft.a
+
 HEADER = pipex.h
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 CC = gcc
 
 REMOVE = rm -f
 
-DEPENDS = @make -C ./Libft 
+DEPENDS = make -C ./Libft 
 
-COMPILE = gcc $(CFLAGS) -o $(NAME) -I./Libft -L./Libft -lft
+COMPILE = gcc $(CFLAGS) -o $(NAME) -I./Libft -L./Libft
 
 # Colors
 GREEN= \033[1;32m
@@ -43,21 +45,21 @@ WHITE= \033[0m
 
 all: $(NAME)
 
-libft:
-	$(DEPENDS)
+$(NAME): $(OBJ) $(LIBFT)
+		$(COMPILE) $(OBJ) $(LIBFT)
 
-$(NAME):$(OBJ) libft 
-		$(COMPILE) $(OBJ)
+$(LIBFT):
+	$(DEPENDS)
 
 clean:
 	$(REMOVE) $(OBJ) $(OBJ_BONUS)
 	make -C ./Libft clean
-	echo "$(GREEN)All .o removed$(WHITE)"
+	@echo "$(GREEN)All .o removed$(WHITE)"
 
 fclean: clean
-	$(REMOVE) $(NAME)
-	make -C ./Libft fclean
-	echo "$(GREEN)All .a removed$(WHITE)"
+	@$(REMOVE) $(NAME)
+	@$(REMOVE) Libft/libft.a
+	@echo "$(GREEN)All .a removed$(WHITE)"
 
 re: fclean all
 
@@ -70,6 +72,6 @@ norm:
 	norminette -R CheckForbiddenSourceHeader $(SRC) $(HEADER)
 	make -C ./Libft norm
 
-.PHONY: all clean fclean re norm libft bonus
+.PHONY: all clean fclean re norm bonus
 
-.SILENT: all clean fclean re libft norm bonus
+#.SILENT: all clean fclean re libft norm bonus

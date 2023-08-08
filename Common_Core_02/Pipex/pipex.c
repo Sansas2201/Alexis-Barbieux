@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:40:43 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/07/19 12:33:29 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/08 11:03:11 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv, char **env)
 {
 	t_pipex	lst;
 
-	if (argc < 5)
+	if (argc != 5)
 		exit (1);
 	else
 	{

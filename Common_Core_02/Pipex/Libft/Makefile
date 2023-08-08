@@ -6,7 +6,7 @@
 #    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 09:28:00 by abarbieu          #+#    #+#              #
-#    Updated: 2023/05/23 15:09:20 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/08/08 12:17:55 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,12 +89,12 @@ fclean: clean
 	$(RM) $(NAME)
 
 $(NAME):$(OBJS)
-	@$(COMPILE) $(OBJS)
+	$(COMPILE) $(OBJS)
 
 re: fclean all
 
 .c.o:
-	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER)
+	$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER)
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
@@ -104,4 +104,4 @@ norm:
 
 .PHONY: all clean fclean re bonus norm
 
-.SILENT: all clean fclean re bonus
+#.SILENT: all clean fclean re bonus

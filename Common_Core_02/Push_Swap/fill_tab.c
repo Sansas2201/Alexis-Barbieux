@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 10:00:09 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/29 13:46:07 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:11:06 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_atoi_ps(const char *str)
 	if (count == -1)
 		res *= -1;
 	if (res < INT_MIN || INT_MAX < res)
-		exit (write(1, "Error : Only INT !\n", 19));
+		exit (write(2, "Error : Only INT !\n", 19));
 	return (res);
 }
 
@@ -46,10 +46,10 @@ static void	fill_tab_1_bis(char **argv, t_push_swap *lst)
 	lst->a = malloc(sizeof(int) * (lst->count));
 	lst->b = malloc(sizeof(int) * (lst->count));
 	if (!lst->a || !lst->b)
-		exit(0);
+		exit(-1);
 	lst->tmp = ft_split(argv[1], ' ');
 	if (!lst->tmp)
-		exit(0);
+		exit(-1);
 }
 
 void	fill_tab_1(char **argv, t_push_swap *lst)
@@ -89,7 +89,7 @@ void	fill_tab_2(int argc, char **argv, t_push_swap *lst)
 	lst->a = malloc(sizeof(int) * argc - 1);
 	lst->b = malloc(sizeof(int) * argc - 1);
 	if (!lst->a || !lst->b)
-		exit(0);
+		exit(-1);
 	lst->count_a = argc - 1;
 	while (y < argc)
 	{

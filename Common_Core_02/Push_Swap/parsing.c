@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 09:58:52 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/28 13:47:29 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:27:07 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_dup(t_push_swap *lst)
 		while (cmp < lst->count_a)
 		{
 			if (lst->a[count] == lst->a[cmp])
-				exit (write(1, "Error : No duplicate allowed !\n", 29));
+				exit (write(2, "Error : No duplicate allowed !\n", 31));
 			cmp++;
 		}
 		count++;
@@ -54,15 +54,17 @@ int	check_more_arg(int argc, char **argv)
 	y = 1;
 	while (y < argc)
 	{
+		if (ft_strlen(argv[y]) == 0)
+			exit (write(2, "Error : Wrong arguments !\n", 26));
 		x = 0;
 		while (argv[y][x])
 		{
 			if (argv[y][x] == ' ')
-				exit (write(1, "Error : Wrong arguments !\n", 26));
+				exit (write(2, "Error : Wrong arguments !\n", 26));
 			if (argv[y][x] == '-' && x == 0)
 				x++;
 			if (ft_isdigit(argv[y][x]) == 0)
-				exit (write(1, "Error : Only numbers in arguments !\n", 36));
+				exit (write(2, "Error : Only numbers in arguments !\n", 36));
 			x++;
 		}
 		y++;
