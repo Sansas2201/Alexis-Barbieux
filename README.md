@@ -15,7 +15,7 @@
         </tr>
     </tbody>
   </table></td>
-                </tr> -->
+                </tr> 
 <table>
         <tbody>
                 <tr>
@@ -41,7 +41,7 @@
     </tbody>
   </table>
   </tr>
-  --> <tr>
+   <tr>
   <table>
         <tbody>
                 <tr>
@@ -70,4 +70,4 @@
         </tr>
     </tbody>
   </table></td>
-                </tr> -->
+                </tr>
