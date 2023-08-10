@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 13:26:03 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/10 10:30:57 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/10 10:38:21 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	check_in(char **argv)
 	int	acc;
 
 	acc = access(argv[1], F_OK);
+	if (acc == -1)
+		return (-1);
 	if (acc == 0)
 		acc = access(argv[1], R_OK);
 	if (acc == 0)

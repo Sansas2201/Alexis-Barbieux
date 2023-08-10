@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:32:28 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/09 13:31:25 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/10 10:40:05 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int	open_file(char **argv, int in_or_out)
 		acc += check_in(argv);
 		if (acc == 0)
 			fd = open(argv[1], O_RDONLY, 0777);
+		else if (acc == -1)
+			fd = -1;
 		else
 		fd = -2;
 	}
