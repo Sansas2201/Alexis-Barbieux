@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:32:28 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/08 13:27:26 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/09 13:31:25 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,19 +103,31 @@ void	second_cmd(char *argv, char **env, t_pipex *lst)
 	}
 }
 
-int	open_file(char *argv, int in_or_out)
+int	open_file(char **argv, int in_or_out)
 {
-	int	fd;
+	static int	acc = 0;
+	int			fd;
 
 	if (in_or_out == 0)
-		fd = open(argv, O_RDONLY, 0777);
-	if (in_or_out == 1)
-		fd = open(argv, O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (fd == -1)
 	{
-		write(2, "zsh: no such file or directory: ", 32);
-		ft_putstr_fd(argv, 2);
-		write(2, "\n", 1);
+		acc += check_in(argv);
+		if (acc == 0)
+			fd = open(argv[1], O_RDONLY, 0777);
+		else
+		fd = -2;
 	}
+	if (in_or_out == 1)
+	{
+		fd = check_out(argv);
+		if (fd == 0)
+			fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		else
+		fd = -2;
+		acc += fd;
+	}
+	if (fd == -1)
+		no_file(argv);
+	if (acc == -4)
+		exit (0);
 	return (fd);
 }

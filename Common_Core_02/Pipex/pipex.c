@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:40:43 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/08 13:20:17 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/09 13:32:09 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int argc, char **argv, char **env)
 		exit (0);
 	else
 	{
-		lst.fd_in = open_file(argv[1], 0);
-		lst.fd_out = open_file(argv[argc - 1], 1);
+		lst.fd_in = open_file(argv, 0);
+		lst.fd_out = open_file(argv, 1);
 	}
 	if (pipe(lst.pipefd) == -1)
 	{
@@ -29,10 +29,11 @@ int	main(int argc, char **argv, char **env)
 		exit (1);
 	}
 	if (is_empty(argv[2]) == 0 && is_whitespace(argv[2]) == 0 \
-		&& lst.fd_in != -1)
+		&& lst.fd_in >= 0)
 		first_cmd(argv[2], env, &lst);
 	close(lst.pipefd[1]);
-	if (is_empty(argv[3]) == 0 && is_whitespace(argv[3]) == 0)
+	if (is_empty(argv[3]) == 0 && is_whitespace(argv[3]) == 0 \
+		&& lst.fd_out != -2)
 		second_cmd(argv[3], env, &lst);
 	close(lst.fd_out);
 	waitpid(lst.child, 0, 0);

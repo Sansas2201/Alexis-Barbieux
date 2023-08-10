@@ -6,7 +6,7 @@
 #    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 09:47:38 by abarbieu          #+#    #+#              #
-#    Updated: 2023/08/08 13:28:41 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/08/10 10:19:00 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,4 +66,4 @@ norm:
 
 .PHONY: all clean fclean re norm
 
-#.SILENT: all clean fclean re libft norm
+#.SILENT: all clean fclean re norm

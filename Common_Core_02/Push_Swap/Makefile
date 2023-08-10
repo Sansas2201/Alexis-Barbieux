@@ -6,7 +6,7 @@
 #    By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 09:47:38 by abarbieu          #+#    #+#              #
-#    Updated: 2023/08/07 15:02:05 by abarbieu         ###   ########.fr        #
+#    Updated: 2023/08/10 09:14:45 by abarbieu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ SRC = push_swap.c \
 
 OBJ = ${SRC:.c=.o}
 
+LIBFT = Libft/libft.a
+
 HEADER = push_swap.h
 
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
@@ -38,7 +40,7 @@ CC = gcc
 
 REMOVE = rm -f
 
-DEPENDS = @make -C ./Libft 
+DEPENDS = make -C ./Libft 
 
 COMPILE = gcc $(CFLAGS) -o $(NAME) -I./Libft -L./Libft -lft
 
@@ -49,21 +51,21 @@ WHITE= \033[0m
 
 all: $(NAME)
 
-libft:
+$(NAME): $(OBJ) $(LIBFT)
+		$(COMPILE) $(OBJ) $(LIBFT)
+
+$(LIBFT):
 	$(DEPENDS)
-
-$(NAME):libft $(OBJ)
-		$(COMPILE) $(OBJ)
-
+	
 clean:
-	$(REMOVE) $(OBJ)
-	make -C ./Libft clean
-	echo "$(GREEN)All .o removed$(WHITE)"
+	@$(REMOVE) $(OBJ)
+	@make -C ./Libft clean
+	@echo "$(GREEN)All .o removed$(WHITE)"
 
 fclean: clean
-	$(REMOVE) $(NAME)
-	make -C ./Libft fclean
-	echo "$(GREEN)All .a removed$(WHITE)"
+	@$(REMOVE) $(NAME)
+	@$(REMOVE) Libft/libft.a
+	@echo "$(GREEN)All .a removed$(WHITE)"
 
 re: fclean all
 
@@ -73,6 +75,6 @@ norm:
 	norminette -R CheckForbiddenSourceHeader $(SRC) $(HEADER)
 	make -C ./Libft norm
 
-.PHONY: all clean fclean re libft norm
+.PHONY: all clean fclean re norm
 
-.SILENT: all clean fclean re libft norm
+#.SILENT: all clean fclean re norm
