@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:20:37 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/05/11 14:29:41 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:00:23 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ size_t	ft_strlen_gnl(char *str)
 	return (i);
 }
 
-char	*ft_set_reserve(char **s)
+char	*ft_set_stack(char **s)
 {
 	free(*s);
 	*s = NULL;
 	return (NULL);
 }
 
-static char	*ft_strjoin(char *reserve, char *buff)
+static char	*ft_strjoin(char *stack, char *buff)
 {
 	size_t	i;
 	size_t	j;
@@ -41,25 +41,25 @@ static char	*ft_strjoin(char *reserve, char *buff)
 
 	i = -1;
 	j = -1;
-	len1 = ft_strlen_gnl(reserve);
+	len1 = ft_strlen_gnl(stack);
 	len2 = ft_strlen_gnl(buff);
 	result = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!result)
 	{
-		free(reserve);
+		free(stack);
 		return (0);
 	}
 	while (++i < len1)
-		result[i] = reserve[i];
+		result[i] = stack[i];
 	while (++j < len2)
 		result[i + j] = buff[j];
 	result[i + j] = '\0';
 	return (result);
 }
 
-char	*ft_join(char *reserve, char **line, char *buff)
+char	*ft_join(char *stack, char **line, char *buff)
 {
-	*line = reserve;
-	reserve = ft_strjoin(*line, buff);
-	return (reserve);
+	*line = stack;
+	stack = ft_strjoin(*line, buff);
+	return (stack);
 }

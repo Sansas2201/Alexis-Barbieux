@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 09:37:32 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/05/11 14:28:41 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/14 14:59:04 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_join(char *reserve, char **line, char *buff);
-char	*ft_set_reserve(char **s);
+char	*ft_join(char *stack, char **line, char *buff);
+char	*ft_set_stack(char **s);
 size_t	ft_strlen_gnl(char *str);
 
 #endif

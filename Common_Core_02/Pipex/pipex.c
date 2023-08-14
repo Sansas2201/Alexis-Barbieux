@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:40:43 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/10 10:57:35 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:27:57 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int argc, char **argv, char **env)
 		exit (0);
 	else
 	{
-		lst.fd_in = open_file(argv, 0);
-		lst.fd_out = open_file(argv, 1);
+		lst.fd_in = open_file(argv[1], 0);
+		lst.fd_out = open_file(argv[4], 1);
 	}
 	if (pipe(lst.pipefd) == -1)
 	{

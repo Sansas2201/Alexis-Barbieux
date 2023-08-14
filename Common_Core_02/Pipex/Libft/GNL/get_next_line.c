@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:10:27 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/05/11 14:30:51 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:17:45 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,26 @@ static int	check_newline(char *line)
 	return (FALSE);
 }
 
-static char	*ft_line(char *reserve)
+static char	*ft_line(char *stack)
 {
 	int		i;
 	int		len;
 	char	*line;
 
-	if (!reserve)
+	if (!stack)
 		return (0);
 	i = 0;
 	len = 0;
-	while (reserve[len] && reserve[len] != '\n')
+	while (stack[len] && stack[len] != '\n')
 		len++;
-	if (reserve[len])
+	if (stack[len])
 		len++;
 	line = malloc(sizeof(*line) * (len + 1));
 	if (!line)
 		return (0);
 	while (i < len)
 	{
-		line[i] = reserve[i];
+		line[i] = stack[i];
 		i++;
 	}
 	line[i] = '\0';
@@ -60,59 +60,59 @@ static char	*ft_free(char *str)
 	return (0);
 }
 
-char	*ft_reste(char *reserve)
+char	*ft_left(char *stack)
 {
 	int		i;
 	int		j;
-	char	*reste;
+	char	*left;
 
-	if (!reserve)
+	if (!stack)
 		return (0);
 	i = 0;
 	j = 0;
-	while (reserve[i] && reserve[i] != '\n')
+	while (stack[i] && stack[i] != '\n')
 		i++;
-	if (!reserve[i])
-		return (ft_free(reserve));
+	if (!stack[i])
+		return (ft_free(stack));
 	i++;
-	reste = malloc(sizeof(char) * (ft_strlen_gnl(reserve + i) + 1));
-	if (!reste)
-		return (ft_free(reserve));
-	while (reserve[i + j])
+	left = malloc(sizeof(char) * (ft_strlen_gnl(stack + i) + 1));
+	if (!left)
+		return (ft_free(stack));
+	while (stack[i + j])
 	{
-		reste[j] = reserve[i + j];
+		left[j] = stack[i + j];
 		j++;
 	}
-	reste[j] = '\0';
-	free(reserve);
-	return (reste);
+	left[j] = '\0';
+	free(stack);
+	return (left);
 }
 
 char	*get_next_line(int fd)
 {
 	int					c_read;
 	char				*line;
-	static char			*reserve = 0;
+	static char			*stack = 0;
 	char				buff[BUFFER_SIZE + 1];
 
-	while (check_newline(reserve) == FALSE)
+	while (check_newline(stack) == FALSE)
 	{
 		c_read = read(fd, buff, BUFFER_SIZE);
 		if (c_read == -1)
-			return (ft_set_reserve(&reserve));
+			return (ft_set_stack(&stack));
 		if (c_read == 0)
 			break ;
 		buff[c_read] = '\0';
-		reserve = ft_join(reserve, &line, buff);
-		if (!reserve)
+		stack = ft_join(stack, &line, buff);
+		if (!stack)
 			return (0);
 		free(line);
 	}
-	line = ft_line(reserve);
+	line = ft_line(stack);
 	if (!line)
-		return (ft_set_reserve(&reserve));
-	reserve = ft_reste(reserve);
-	if (reserve && reserve[0] == '\0')
-		ft_set_reserve(&reserve);
+		return (ft_set_stack(&stack));
+	stack = ft_left(stack);
+	if (stack && stack[0] == '\0')
+		ft_set_stack(&stack);
 	return (line);
 }

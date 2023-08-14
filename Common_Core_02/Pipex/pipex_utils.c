@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:32:28 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/10 11:13:40 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:35:08 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	second_cmd(char *argv, char **env, t_pipex *lst)
 	}
 }
 
-int	open_file(char **argv, int in_or_out)
+int	open_file(char *argv, int in_or_out)
 {
 	static int	acc = 0;
 	int			fd;
@@ -112,7 +112,7 @@ int	open_file(char **argv, int in_or_out)
 	{
 		acc += check_in(argv);
 		if (acc == 0)
-			fd = open(argv[1], O_RDONLY, 0777);
+			fd = open(argv, O_RDONLY, 0777);
 		else if (acc == -1)
 			fd = -1;
 		else
@@ -122,11 +122,11 @@ int	open_file(char **argv, int in_or_out)
 	{
 		fd = check_out(argv);
 		if (fd == 0)
-			fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+			fd = open(argv, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		acc += fd;
 	}
 	if (fd == -1)
-		no_file(argv);
+		no_file(argv, in_or_out);
 	if (acc == -4)
 		exit (0);
 	return (fd);

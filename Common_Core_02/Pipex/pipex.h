@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:36:25 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/09 13:30:16 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:35:23 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ typedef struct s_pipex
 	pid_t	child_2;
 }	t_pipex;
 
-int		check_in(char **argv);
-int		check_out(char **argv);
+int		check_in(char *argv);
+int		check_out(char *argv);
 void	command_not_found(char *argv);
 void	exec(char *argv, char **env, t_pipex *lst);
 void	first_cmd(char *argv, char **env, t_pipex *lst);
 int		is_empty(char *argv);
 int		is_whitespace(char *argv);
-void	no_file(char **argv);
-int		open_file(char **argv, int in_or_out);
+void	no_file(char *argv, int in_or_out);
+int		open_file(char *argv, int in_or_out);
 void	second_cmd(char *argv, char **env, t_pipex *lst);
 
 #endif
