@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 11:04:42 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/04/20 10:55:29 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:15:36 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**ft_split(char const *str, char c)
 	while (*str != '\0')
 	{
 		while (*str != '\0' && (*str == c))
-		str++;
+			str++;
 		if (*str != '\0')
 			strings[i++] = ft_word(str, c);
 		if (i > 0 && strings[i - 1] == NULL)

@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:25:40 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/27 14:31:50 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:13:47 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	to_a_3(t_push_swap *lst, int count, int count_a)
 			to_a_3_bis(lst, count_a, count);
 			break ;
 		}
-	count_a++;
+		count_a++;
 	}
 }
 

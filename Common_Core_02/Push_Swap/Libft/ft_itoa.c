@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarbieu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:25:10 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/04/13 11:32:31 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:11:12 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
 
 static long int	ft_count(long int n)
 {
@@ -31,9 +30,9 @@ static char	*ft_convert(char *result, long int n, int len)
 	}
 	while (len > 0)
 	{
-	result[len - 1] = (n % 10) + 48;
-	n = n / 10;
-	len--;
+		result[len - 1] = (n % 10) + 48;
+		n = n / 10;
+		len--;
 	}
 	if (i == 1)
 		result[0] = '-';

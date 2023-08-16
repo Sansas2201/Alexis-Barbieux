@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:35:52 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/06/27 14:26:21 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:12:29 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_sa(t_push_swap *lst)
 
 	temp = lst->a[0];
 	lst->a[0] = lst->a[1];
-lst->a[1] = temp;
+	lst->a[1] = temp;
 }
 
 void	ft_sb(t_push_swap *lst)
