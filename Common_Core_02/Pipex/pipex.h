@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:36:25 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/14 15:35:23 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/16 08:14:21 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		check_out(char *argv);
 void	command_not_found(char *argv);
 void	exec(char *argv, char **env, t_pipex *lst);
 void	first_cmd(char *argv, char **env, t_pipex *lst);
-int		is_empty(char *argv);
+int		is_empty(char *argv, int in_or_out);
 int		is_whitespace(char *argv);
 void	no_file(char *argv, int in_or_out);
 int		open_file(char *argv, int in_or_out);

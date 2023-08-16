@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:32:28 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/14 15:35:08 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/16 08:18:00 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	open_file(char *argv, int in_or_out)
 	static int	acc = 0;
 	int			fd;
 
-	if (in_or_out == 0)
+	if (in_or_out == 0 && is_empty(argv, in_or_out) == 0)
 	{
 		acc += check_in(argv);
 		if (acc == 0)
@@ -118,14 +118,14 @@ int	open_file(char *argv, int in_or_out)
 		else
 			fd = -2;
 	}
-	if (in_or_out == 1)
+	if (in_or_out == 1 && is_empty(argv, in_or_out) == 0)
 	{
 		fd = check_out(argv);
 		if (fd == 0)
 			fd = open(argv, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		acc += fd;
 	}
-	if (fd == -1)
+	if (fd == -1 && is_empty(argv, in_or_out) == 0)
 		no_file(argv, in_or_out);
 	if (acc == -4)
 		exit (0);
