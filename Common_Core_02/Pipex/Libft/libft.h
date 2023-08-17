@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 09:58:17 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/05/22 11:00:57 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/17 13:13:58 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <stdlib.h>
 
 # define TRUE 1
 # define FALSE 0

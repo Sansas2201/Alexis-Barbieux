@@ -6,9 +6,11 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:25:10 by abarbieu          #+#    #+#             */
-/*   Updated: 2023/08/16 13:08:36 by abarbieu         ###   ########.fr       */
+/*   Updated: 2023/08/17 13:14:45 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static long int	ft_count(long int n)
 {
