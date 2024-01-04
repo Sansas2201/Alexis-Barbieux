@@ -6,7 +6,7 @@
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 09:06:48 by abarbieu          #+#    #+#             */
-/*   Updated: 2024/01/03 10:01:10 by abarbieu         ###   ########.fr       */
+/*   Updated: 2024/01/03 13:04:48 by abarbieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,30 @@ void	Bureaucrat::GradeDecr(){
 	grade++;
 }
 
-//------------------------Sign Form----------------------//
+//------------------------Form----------------------//
 
-void	Bureaucrat::signForm(Form& form){
+void	Bureaucrat::signForm(AForm& form){
 	try{
 		form.beSigned(*this);
 		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	}
 	catch(const std::exception& e){
-		std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cerr << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
+
+void	Bureaucrat::executeForm(AForm const & form){
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << this->getName() << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 
 //-------------------Operator Overload------------------//
 

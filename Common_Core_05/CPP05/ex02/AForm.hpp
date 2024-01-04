@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbieu <abarbieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,18 +17,18 @@
 
 class Bureaucrat;
 
-class Form{
-private:
+class AForm{
+protected:
 	const std::string _name;
 	bool	_signed;
 	const int	_sign_grade;
 	const int	_exec_grade;
-	Form();
+	AForm();
 public:
-	Form(std::string name, int sign_grade, int exec_grade);
-	Form(const Form& copy);
-	Form& operator=(const Form& copy);
-	~Form();
+	AForm(std::string name, int sign_grade, int exec_grade);
+	AForm(const AForm& copy);
+	AForm& operator=(const AForm& copy);
+	~AForm();
 
 	std::string getName() const;
 	bool	getSigned() const;
@@ -36,6 +36,7 @@ public:
 	int	getExecGrade() const;
 
 	void	beSigned(const Bureaucrat& bureaucrat);
+	virtual void	execute(Bureaucrat const & executor) const = 0;
 
 	class GradeTooHighException : public std::exception{
 	public:
@@ -46,8 +47,13 @@ public:
 	public:
 		virtual const char* what() const throw(){ return "Form: Grade too low" ;}
 	};
+
+	class NotSignedException : public std::exception{
+		public:
+			virtual const char* what() const throw(){ return "Form: Not signed" ;}
+	};
 };
 
-std::ostream& operator<<(std::ostream& o, const Form& copy);
+std::ostream& operator<<(std::ostream& o, const AForm& copy);
 
 #endif
